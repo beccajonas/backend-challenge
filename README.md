@@ -31,12 +31,13 @@ python -c 'import secrets; print(secrets.token_hex())'
 FLASK_SECRET_KEY=insert_key_here
 ```
 
+*BEFORE STEP 6: Copy and paste the contents of the repository's Pipfile into your local machine's Pipfile if they do not match.*
+
 6. Create virtual envionrment by running the following commands in terminal.
 ```bash
 pipenv install
 pipenv shell
 ```
-6a. Copy and pase contents of repo's Pipfile into local machines Pipfile. Repeat step 6.
 
 7. Initiliaze databse by running the following commands in terminal.
 ```bash
