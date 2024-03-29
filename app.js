@@ -36,7 +36,7 @@ window.addEventListener('load', function () {
 socket.on('player_created', function (player) {
 	console.log('Received player_created event:', player);
 	let playersDiv = document.getElementById('players');
-	playersDiv.innerHTML += `<p>${player.id} | Player Details: ${player.username}</p>`;
+	playersDiv.innerHTML += `<p>${player.id} | Player: ${player.username}</p>`;
 });
 
 socket.on('lobby_created', function (lobby) {
