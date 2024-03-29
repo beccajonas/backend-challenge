@@ -7,6 +7,7 @@ https://github.com/beccajonas/backend-challenge/assets/87732074/d33b72ce-ddef-4c
 ### Built With
 - Python
 - Flask
+- Flask SocketIO
 - SQL Alchemy
 - Vanilla Javascript
 
