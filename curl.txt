@@ -31,9 +31,9 @@ Join player 2 to lobby 1:
     http://localhost:5555/join-lobby/1
 
 Remove player 1 from lobby 1:
-    curl -X POST \
+    curl -X DELETE \
     http://localhost:5555/leave-lobby/1/1
 
 Remove player 2 from lobby 2:
-    curl -X POST \
+    curl -X DELETE \
     http://localhost:5555/leave-lobby/1/1
