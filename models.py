@@ -1,13 +1,7 @@
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy import MetaData
-from sqlalchemy.orm import validates
-from sqlalchemy.ext.associationproxy import association_proxy
 from sqlalchemy_serializer import SerializerMixin
-from dotenv import load_dotenv
-from sqlalchemy.orm import relationship
-import requests
 
-load_dotenv()
 
 metadata = MetaData(
     naming_convention={
@@ -20,6 +14,7 @@ metadata = MetaData(
 )
 db = SQLAlchemy(metadata=metadata)
 
+# Establish many-to-many relationship between Players/Lobbies
 association_table = db.Table('association', db.Model.metadata,
     db.Column('player_id', db.Integer, db.ForeignKey('players.id')),
     db.Column('lobby_id', db.Integer, db.ForeignKey('lobbies.id'))
@@ -27,7 +22,7 @@ association_table = db.Table('association', db.Model.metadata,
 
 class Lobby(db.Model, SerializerMixin):
     __tablename__ = 'lobbies'
-    serialize_rules = ['-players.lobbies']
+    serialize_rules = ['-players.lobbies'] 
     id = db.Column(db.Integer, primary_key=True)
     details = db.Column(db.String)
     players = db.relationship('Player', secondary=association_table, back_populates='lobbies')
