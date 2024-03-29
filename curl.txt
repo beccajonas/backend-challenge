@@ -1,0 +1,33 @@
+Create a lobby:
+    curl -X POST \
+    -H "Content-Type: application/json" \
+    -d '{"details": "This is a lobby!"}' \
+    http://localhost:5555/create-lobby
+
+Create a player 1 :
+    curl -X POST \
+    -H "Content-Type: application/json" \
+    -d '{"username": "player1"}' \
+    http://localhost:5555/create-player
+
+Create a player 2:
+    curl -X POST \
+    -H "Content-Type: application/json" \
+    -d '{"username": "player2"}' \
+    http://localhost:5555/create-player
+
+Join player 1 to lobby 1:
+    curl -X POST \
+    -H "Content-Type: application/json" \
+    -d '{"player_id": 1}' \
+    http://localhost:5555/join-lobby/1
+
+Join player 2 to lobby 1:
+    curl -X POST \
+    -H "Content-Type: application/json" \
+    -d '{"player_id": 2}' \
+    http://localhost:5555/join-lobby/1
+
+Leave a lobby:
+    curl -X POST \
+    http://localhost:5555/leave-lobby/1/1
