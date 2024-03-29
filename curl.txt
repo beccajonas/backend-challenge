@@ -1,7 +1,9 @@
+! cURL commands to emulate game play, activites and user creation. Run in order.
+
 Create a lobby:
     curl -X POST \
     -H "Content-Type: application/json" \
-    -d '{"details": "This is a lobby!"}' \
+    -d '{"details": "This is my first lobby!"}' \
     http://localhost:5555/create-lobby
 
 Create a player 1 :
@@ -28,6 +30,10 @@ Join player 2 to lobby 1:
     -d '{"player_id": 2}' \
     http://localhost:5555/join-lobby/1
 
-Leave a lobby:
+Remove player 1 from lobby 1:
+    curl -X POST \
+    http://localhost:5555/leave-lobby/1/1
+
+Remove player 2 from lobby 2:
     curl -X POST \
     http://localhost:5555/leave-lobby/1/1
