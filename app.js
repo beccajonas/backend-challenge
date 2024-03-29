@@ -44,3 +44,21 @@ socket.on('lobby_created', function (lobby) {
 	let lobbiesDiv = document.getElementById('lobbies');
 	lobbiesDiv.innerHTML += `<p>${lobby.id} | Lobby Details: ${lobby.details}</p>`;
 });
+
+socket.on('player_joined_lobby', function (data) {
+	console.log('Received player_joined_lobby event:', data);
+	let activitiesDiv = document.getElementById('activities');
+	activitiesDiv.innerHTML += `<p>Player ${data.player_id} joined Lobby ${data.lobby_id}</p>`;
+});
+
+socket.on('player_left_lobby', function (data) {
+	console.log('Received player_left_lobby event:', data);
+	let activitiesDiv = document.getElementById('activities');
+	activitiesDiv.innerHTML += `<p>Player ${data.player_id} left Lobby ${data.lobby_id}</p>`;
+});
+
+socket.on('game_started', function (data) {
+	console.log('Received game_started event:', data);
+	let activitiesDiv = document.getElementById('activities');
+	activitiesDiv.innerHTML += `<p>${data.message}</p>`;
+});

@@ -1,5 +1,5 @@
 from flask import Flask, json, request, jsonify
-from flask_socketio import SocketIO, join_room, leave_room, emit
+from flask_socketio import SocketIO
 from flask_migrate import Migrate
 from flask_bcrypt import Bcrypt
 from flask_cors import CORS
@@ -73,10 +73,14 @@ def join_lobby(lobby_id):
     lobby.players.append(player)
     db.session.commit()
 
+    # Emit a Socket.IO event to notify that a player has joined a lobby
+    socketio.emit('player_joined_lobby', {'player_id': player.id, 'lobby_id': lobby.id})
+
     # Check if the lobby has reached 2 players
     if len(lobby.players) == 2:
         # Emit a socket event to notify that the game has started
-        socketio.emit('game_started', {'message': 'Game started'}, room=lobby_id)
+        print('game starts!')
+        socketio.emit('game_started', {'message': f'2 players have joined Lobby {lobby.id}. Game has started!'})
         
     return jsonify({'message': f'Player {player.username} joined lobby {lobby.id} successfully'}), 200
 
@@ -95,6 +99,9 @@ def leave_lobby(lobby_id, player_id):
 
     lobby.players.remove(player)
     db.session.commit()
+
+    # Emit a Socket.IO event to notify that a player has left a lobby
+    socketio.emit('player_left_lobby', {'player_id': player.id, 'lobby_id': lobby.id})
 
     return jsonify({'message': f'Player {player.username} left lobby {lobby.id} successfully'}), 200
 
