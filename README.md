@@ -18,45 +18,53 @@ https://github.com/beccajonas/backend-challenge/assets/87732074/d33b72ce-ddef-4c
 python3 --version
 >> Python 3.11.4
 ```
+2. Install pip.
+```bash
+python -m pip install --upgrade pip
+```
+3. Install pipenv.
+```bash
+pip install pipenv
+```
 
-2. Clone to this repo local machine. Open with VSCode.
+4. Clone to this repo local machine. Open with VSCode.
    
-3. Create .env file using command below in terminal.
+5. Create .env file using command below in terminal.
 ```bash
 touch .env
 ```
 
-4. Create key using command below in terminal.
+6. Create key using command below in terminal.
 ```bash
 python -c 'import secrets; print(secrets.token_hex())'
 ```
 
-5. Copy key from terminal and paste into .env file with FLASK_SECRET_KEY preceding it like example below.
+7. Copy key from terminal and paste into .env file with FLASK_SECRET_KEY preceding it like example below.
 ```bash
 FLASK_SECRET_KEY=insert_key_here
 ```
 
-*BEFORE STEP 6: Copy and paste the contents of the repository's Pipfile into your local machine's Pipfile if they do not match.*
+*BEFORE STEP 8: Copy and paste the contents of the repository's Pipfile into your local machine's Pipfile if they do not match.*
 
-6. Create virtual envionrment by running the following commands in terminal.
+8. Create virtual envionrment by running the following commands in terminal.
 ```bash
 pipenv install
 pipenv shell
 ```
 
-7. Initiliaze databse by running the following commands in terminal.
+9. Initiliaze databse by running the following commands in terminal.
 ```bash
 flask db init
 flask db migrate
 flask db upgrade
 ```
 
-8. Run server by running the following commands in terminal.
+10. Run server by running the following commands in terminal.
 ```bash
 python app.py
 ````
 
-9. Open index.html in local browser. Ensure live server is disabled.
+11. Open index.html in local browser. Ensure live server is disabled.
 
-10. In a **seperate** terminal, run the cURL commands in curl.txt file sequentially. 
+12. In a **seperate** terminal, run the cURL commands in curl.txt file sequentially. 
 
